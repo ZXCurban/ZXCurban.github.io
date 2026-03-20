@@ -670,32 +670,72 @@ body[data-theme="light"] .theme-icon .moon {
 
 @media (max-width: 700px) {
   .shell {
-    width: min(94vw, 520px);
+    width: min(96vw, 520px);
+    padding: 10px 0 44px;
   }
 
   .topbar {
     top: 6px;
-    padding: 12px;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+
+  .brand {
+    min-height: 36px;
+    align-items: center;
+  }
+
+  .nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .nav a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 34px;
+    border: 1px solid var(--stroke);
+    border-radius: 10px;
+    font-size: 0.82rem;
+    background: color-mix(in oklab, var(--panel), transparent 10%);
+  }
+
+  .nav a::after {
+    display: none;
   }
 
   .controls {
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .control-btn {
-    flex: 1;
+    width: 100%;
     justify-content: center;
+    min-height: 38px;
+    font-size: 11px;
+    padding: 8px 10px;
   }
 
   .hero {
-    margin-top: 38px;
+    margin-top: 24px;
+    padding-top: 12px;
   }
 
   .section,
   .intro-profile,
   .why-card,
   .footer {
-    padding: 18px;
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: 14px;
+    contain-intrinsic-size: auto;
   }
 
   .stack-grid,
@@ -707,8 +747,78 @@ body[data-theme="light"] .theme-icon .moon {
   }
 
   .cookie-consent {
-    right: 10px;
-    bottom: 10px;
+    right: 8px;
+    bottom: 8px;
+    width: min(96vw, 360px);
+    padding: 12px 13px;
+    border-radius: 10px;
+  }
+
+  .cookie-title {
+    font-size: 0.9rem;
+  }
+
+  .cookie-text {
+    font-size: 0.84rem;
+  }
+
+  .cookie-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .shell {
+    width: 100%;
+    padding: 8px 8px 34px;
+  }
+
+  .topbar {
+    top: 4px;
+    padding: 8px;
+  }
+
+  .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intro-name {
+    font-size: clamp(1.35rem, 7.2vw, 1.75rem);
+  }
+
+  .intro-badges {
+    gap: 6px;
+  }
+
+  .intro-badges span {
+    font-size: 0.72rem;
+    padding: 5px 8px;
+  }
+
+  .section h2,
+  .why-card h3 {
+    font-size: clamp(1.2rem, 6vw, 1.45rem);
+  }
+
+  .stack-item,
+  .service,
+  .project,
+  .process-step,
+  .contact-card {
+    padding: 13px;
+    border-radius: 12px;
+  }
+
+  .stack-item p,
+  .service p,
+  .project p,
+  .process-step p,
+  .section p.lead,
+  .intro-text,
+  .why-card p {
+    font-size: 0.95rem;
+    line-height: 1.55;
   }
 }
 
