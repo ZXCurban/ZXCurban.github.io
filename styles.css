@@ -475,6 +475,39 @@ body[data-theme="light"] .theme-icon .moon {
   font-size: 1rem;
 }
 
+.about-stack {
+  margin-top: 14px;
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 12px;
+  background: color-mix(in oklab, var(--panel), transparent 8%);
+}
+
+.about-stack-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.about-stack-chips {
+  margin-top: 9px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-stack-chips span {
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--text);
+  background: color-mix(in oklab, var(--panel), transparent 2%);
+}
+
 .stack-grid,
 .services-grid,
 .projects-grid,
@@ -878,6 +911,15 @@ h6 {
   .why-card p {
     font-size: 0.95rem;
     line-height: 1.55;
+  }
+
+  .about-stack {
+    padding: 10px;
+  }
+
+  .about-stack-chips span {
+    font-size: 0.72rem;
+    padding: 5px 8px;
   }
 }
 
