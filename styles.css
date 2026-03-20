@@ -164,6 +164,13 @@ body[data-theme="light"] .bg-circuit {
   background: color-mix(in oklab, var(--panel), transparent 12%);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
+  transition: transform 0.28s var(--ease), opacity 0.28s var(--ease);
+}
+
+.topbar.is-hidden-mobile {
+  transform: translateY(-130%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .brand {
@@ -584,8 +591,8 @@ body[data-theme="light"] .theme-icon .moon {
 
 .reveal {
   opacity: 0;
-  transform: translateY(22px) scale(0.98);
-  transition: transform 0.75s var(--ease), opacity 0.75s var(--ease);
+  transform: translateY(14px);
+  transition: transform 0.5s var(--ease), opacity 0.5s var(--ease);
   transition-delay: var(--delay, 0ms);
   will-change: transform, opacity;
 }
@@ -648,6 +655,16 @@ body[data-theme="light"] .theme-icon .moon {
   filter: brightness(1.05);
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  cursor: pointer;
+}
+
 @media (max-width: 1040px) {
   .topbar {
     flex-wrap: wrap;
@@ -670,38 +687,45 @@ body[data-theme="light"] .theme-icon .moon {
 
 @media (max-width: 700px) {
   .shell {
-    width: min(96vw, 520px);
-    padding: 10px 0 44px;
+    width: min(98vw, 520px);
+    padding: 8px 0 30px;
   }
 
   .topbar {
-    top: 6px;
-    padding: 10px;
-    gap: 10px;
-    border-radius: 14px;
+    top: 4px;
+    padding: 7px;
+    gap: 7px;
+    border-radius: 12px;
+    backdrop-filter: blur(9px);
   }
 
   .brand {
-    min-height: 36px;
+    min-height: 28px;
     align-items: center;
+  }
+
+  .brand-dot {
+    width: 9px;
+    height: 9px;
   }
 
   .nav {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+    gap: 6px;
   }
 
   .nav a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-height: 34px;
+    min-height: 30px;
     border: 1px solid var(--stroke);
-    border-radius: 10px;
-    font-size: 0.82rem;
+    border-radius: 9px;
+    font-size: 0.75rem;
     background: color-mix(in oklab, var(--panel), transparent 10%);
+    padding: 4px 6px;
   }
 
   .nav a::after {
@@ -712,19 +736,37 @@ body[data-theme="light"] .theme-icon .moon {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: 6px;
   }
 
   .control-btn {
     width: 100%;
     justify-content: center;
-    min-height: 38px;
-    font-size: 11px;
-    padding: 8px 10px;
+    min-height: 32px;
+    font-size: 10px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    gap: 6px;
+  }
+
+  .lang-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .theme-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .pill {
+    min-width: 28px;
+    padding: 3px 6px;
+    font-size: 10px;
   }
 
   .hero {
-    margin-top: 24px;
+    margin-top: 12px;
     padding-top: 12px;
   }
 
@@ -765,6 +807,23 @@ body[data-theme="light"] .theme-icon .moon {
   .cookie-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .circuit-line,
+  .circuit-node {
+    animation: none !important;
+  }
+
+  .bg-circuit {
+    opacity: 0.34;
+  }
+
+  .section,
+  .intro-profile,
+  .why-card,
+  .footer,
+  .topbar {
+    box-shadow: 0 10px 24px rgba(5, 6, 16, 0.28);
   }
 }
 

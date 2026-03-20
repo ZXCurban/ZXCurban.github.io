@@ -133,6 +133,7 @@ const translations = {
 
 const body = document.body;
 const preloader = document.getElementById("preloader");
+const topbar = document.querySelector(".topbar");
 const langToggle = document.getElementById("langToggle");
 const langValue = document.getElementById("langValue");
 const themeToggle = document.getElementById("themeToggle");
@@ -142,12 +143,14 @@ const cookieConsent = document.getElementById("cookieConsent");
 const cookieAccept = document.getElementById("cookieAccept");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(pointer: fine)").matches;
+const mobileViewport = window.matchMedia("(max-width: 700px)");
 
 let currentLang = localStorage.getItem("site-lang") || "ru";
 let currentTheme = localStorage.getItem("site-theme") || "dark";
 const COOKIE_KEY = "site-cookie-consent";
-const PRELOADER_MIN_MS = 2000;
+const PRELOADER_MIN_MS = 700;
 const preloaderStartedAt = performance.now();
+let lastScrollY = window.scrollY;
 
 function applyLanguage(lang) {
   const dict = translations[lang] || translations.ru;
@@ -241,15 +244,40 @@ function updateScrollProgress() {
   body.style.setProperty("--scroll", `${progress}%`);
 }
 
+function updateMobileTopbar() {
+  if (!topbar) {
+    return;
+  }
+  if (!mobileViewport.matches) {
+    topbar.classList.remove("is-hidden-mobile");
+    lastScrollY = window.scrollY;
+    return;
+  }
+  const currentY = window.scrollY;
+  const delta = currentY - lastScrollY;
+  const nearTop = currentY < 60;
+  if (nearTop || delta < -6) {
+    topbar.classList.remove("is-hidden-mobile");
+  } else if (delta > 6) {
+    topbar.classList.add("is-hidden-mobile");
+  }
+  lastScrollY = currentY;
+}
+
 window.addEventListener("scroll", () => {
   if (scrollRaf) {
     return;
   }
   scrollRaf = window.requestAnimationFrame(() => {
     updateScrollProgress();
+    updateMobileTopbar();
     scrollRaf = null;
   });
 }, { passive: true });
+
+mobileViewport.addEventListener("change", () => {
+  updateMobileTopbar();
+});
 
 function initCookieConsent() {
   if (!cookieConsent || !cookieAccept) {
@@ -289,4 +317,5 @@ applyLanguage(currentLang);
 applyTheme(currentTheme);
 initCookieConsent();
 updateScrollProgress();
+updateMobileTopbar();
 hidePreloader();
