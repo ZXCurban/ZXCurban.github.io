@@ -13,15 +13,15 @@
 }
 
 body[data-theme="light"] {
-  --bg: #dfe4ef;
-  --bg-soft: #d3daea;
-  --panel: rgba(244, 247, 252, 0.9);
-  --stroke: rgba(109, 79, 186, 0.24);
-  --text: #1e2430;
-  --muted: #5d6676;
+  --bg: #d6dcec;
+  --bg-soft: #c8d1e6;
+  --panel: rgba(236, 241, 250, 0.92);
+  --stroke: rgba(104, 78, 176, 0.27);
+  --text: #1c2432;
+  --muted: #556176;
   --accent: #7c3aed;
   --accent-2: #0891b2;
-  --shadow: 0 22px 45px rgba(24, 31, 44, 0.18);
+  --shadow: 0 22px 45px rgba(20, 30, 48, 0.2);
 }
 
 * {

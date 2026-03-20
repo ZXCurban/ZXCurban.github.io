@@ -156,7 +156,7 @@ const finePointer = window.matchMedia("(pointer: fine)").matches;
 const mobileViewport = window.matchMedia("(max-width: 900px)");
 
 let currentLang = localStorage.getItem("site-lang") || "ru";
-let currentTheme = localStorage.getItem("site-theme") || "dark";
+let currentTheme = localStorage.getItem("site-theme") || "light";
 const COOKIE_KEY = "site-cookie-consent";
 const PRELOADER_MIN_MS = mobileViewport.matches ? 180 : 700;
 const preloaderStartedAt = performance.now();
