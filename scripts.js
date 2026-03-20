@@ -158,7 +158,7 @@ const mobileViewport = window.matchMedia("(max-width: 900px)");
 let currentLang = localStorage.getItem("site-lang") || "ru";
 let currentTheme = localStorage.getItem("site-theme") || "dark";
 const COOKIE_KEY = "site-cookie-consent";
-const PRELOADER_MIN_MS = 700;
+const PRELOADER_MIN_MS = mobileViewport.matches ? 180 : 700;
 const preloaderStartedAt = performance.now();
 
 function closeMenu() {
@@ -292,6 +292,9 @@ function updateScrollProgress() {
 window.addEventListener("scroll", () => {
   if (scrollRaf) {
     return;
+  }
+  if (mobileViewport.matches && topbar && topbar.classList.contains("menu-open")) {
+    closeMenu();
   }
   scrollRaf = window.requestAnimationFrame(() => {
     updateScrollProgress();
