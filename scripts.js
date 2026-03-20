@@ -138,6 +138,8 @@ const translations = {
 const body = document.body;
 const preloader = document.getElementById("preloader");
 const topbar = document.querySelector(".topbar");
+const menuToggle = document.getElementById("menuToggle");
+const headerMenu = document.getElementById("headerMenu");
 const langToggle = document.getElementById("langToggle");
 const langValue = document.getElementById("langValue");
 const themeToggle = document.getElementById("themeToggle");
@@ -155,6 +157,34 @@ const COOKIE_KEY = "site-cookie-consent";
 const PRELOADER_MIN_MS = 700;
 const preloaderStartedAt = performance.now();
 let lastScrollY = window.scrollY;
+
+function closeMenu() {
+  if (!topbar || !menuToggle) {
+    return;
+  }
+  topbar.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+}
+
+function openMenu() {
+  if (!topbar || !menuToggle) {
+    return;
+  }
+  topbar.classList.add("menu-open");
+  menuToggle.setAttribute("aria-expanded", "true");
+}
+
+function toggleMenu() {
+  if (!topbar) {
+    return;
+  }
+  const isOpen = topbar.classList.contains("menu-open");
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
 
 function applyLanguage(lang) {
   const dict = translations[lang] || translations.ru;
@@ -260,6 +290,11 @@ function updateMobileTopbar() {
   const currentY = window.scrollY;
   const delta = currentY - lastScrollY;
   const nearTop = currentY < 60;
+  if (topbar.classList.contains("menu-open")) {
+    topbar.classList.remove("is-hidden-mobile");
+    lastScrollY = currentY;
+    return;
+  }
   if (nearTop || delta < -6) {
     topbar.classList.remove("is-hidden-mobile");
   } else if (delta > 6) {
@@ -280,7 +315,23 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 
 mobileViewport.addEventListener("change", () => {
+  closeMenu();
   updateMobileTopbar();
+});
+
+if (menuToggle && headerMenu) {
+  menuToggle.addEventListener("click", toggleMenu);
+  headerMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
+    });
+  });
+}
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
 });
 
 function initCookieConsent() {
