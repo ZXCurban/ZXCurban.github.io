@@ -167,20 +167,19 @@ body[data-theme="light"] .bg-circuit {
   transition: transform 0.28s var(--ease), opacity 0.28s var(--ease);
 }
 
-.topbar.is-hidden-mobile {
-  transform: translateY(-130%);
-  opacity: 0;
-  pointer-events: none;
-}
-
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   text-decoration: none;
   color: var(--text);
   font-weight: 800;
   letter-spacing: 0.04em;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  background: color-mix(in oklab, var(--panel), transparent 8%);
 }
 
 .menu-toggle {
@@ -220,22 +219,28 @@ body[data-theme="light"] .bg-circuit {
 }
 
 .header-menu {
-  display: contents;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
 }
 
-.brand-dot {
+.brand-mark {
   width: 12px;
   height: 12px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.42);
-  animation: dotBeat 2.4s ease-out infinite;
+  border-radius: 3px;
+  border: 1.6px solid color-mix(in oklab, var(--accent), white 18%);
+  background: linear-gradient(145deg, color-mix(in oklab, var(--accent), transparent 68%), color-mix(in oklab, var(--accent-2), transparent 72%));
 }
 
 .nav {
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-left: 0;
+  flex-wrap: wrap;
 }
 
 .nav a {
@@ -469,8 +474,6 @@ body[data-theme="light"] .theme-icon .moon {
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
-  will-change: transform;
-  transform: translateZ(0);
   content-visibility: auto;
   contain-intrinsic-size: 520px;
 }
@@ -667,7 +670,6 @@ body[data-theme="light"] .theme-icon .moon {
   transform: translateY(14px);
   transition: transform 0.5s var(--ease), opacity 0.5s var(--ease);
   transition-delay: var(--delay, 0ms);
-  will-change: transform, opacity;
 }
 
 .reveal.in-view {
@@ -728,25 +730,13 @@ body[data-theme="light"] .theme-icon .moon {
   filter: brightness(1.05);
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  cursor: pointer;
-}
-
 @media (max-width: 1040px) {
-  .topbar {
-    flex-wrap: wrap;
+  .header-menu {
+    gap: 12px;
   }
 
   .nav {
-    width: 100%;
-    order: 3;
-    justify-content: center;
+    gap: 12px;
   }
 
   .stack-grid,
@@ -758,28 +748,12 @@ h6 {
   }
 }
 
-@media (max-width: 700px) {
-  .shell {
-    width: min(98vw, 520px);
-    padding: 8px 0 30px;
-  }
-
+@media (max-width: 900px) {
   .topbar {
-    top: 4px;
-    padding: 7px;
-    gap: 7px;
-    border-radius: 12px;
-    backdrop-filter: blur(9px);
-  }
-
-  .brand {
-    min-height: 28px;
-    align-items: center;
-  }
-
-  .brand-dot {
-    width: 9px;
-    height: 9px;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: color-mix(in oklab, var(--panel), transparent 2%);
+    backdrop-filter: none;
   }
 
   .menu-toggle {
@@ -814,10 +788,10 @@ h6 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    min-height: 32px;
+    min-height: 34px;
     border: 1px solid var(--stroke);
     border-radius: 9px;
-    font-size: 0.76rem;
+    font-size: 0.8rem;
     background: color-mix(in oklab, var(--panel), transparent 10%);
     padding: 4px 6px;
   }
@@ -837,11 +811,31 @@ h6 {
   .control-btn {
     width: 100%;
     justify-content: center;
-    min-height: 32px;
-    font-size: 10px;
-    padding: 6px 8px;
+    min-height: 40px;
+    font-size: 11px;
+    padding: 8px 10px;
     border-radius: 10px;
     gap: 6px;
+  }
+}
+
+@media (max-width: 700px) {
+  .shell {
+    width: min(98vw, 520px);
+    padding: 8px 0 30px;
+  }
+
+  .topbar {
+    top: 4px;
+    padding: 7px;
+    gap: 7px;
+    border-radius: 12px;
+    backdrop-filter: none;
+  }
+
+  .brand {
+    min-height: 28px;
+    align-items: center;
   }
 
   .lang-icon {
@@ -933,6 +927,11 @@ h6 {
     padding: 8px;
   }
 
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
   .intro-name {
     font-size: clamp(1.35rem, 7.2vw, 1.75rem);
   }
@@ -981,6 +980,52 @@ h6 {
   }
 }
 
+@media (max-width: 430px) {
+  .nav,
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .nav a,
+  .control-btn {
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 700px) {
+  .brand {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+
+  .brand-mark {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+@media (hover: none) {
+  .section::before,
+  .intro-profile::before,
+  .why-card::before,
+  .footer::before {
+    display: none;
+  }
+
+  .stack-item:hover,
+  .service:hover,
+  .project:hover,
+  .process-step:hover,
+  .control-btn:hover,
+  .cookie-btn:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--stroke);
+    filter: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
@@ -1007,12 +1052,6 @@ h6 {
 @keyframes nodePulse {
   0%, 100% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.5); opacity: 1; }
-}
-
-@keyframes dotBeat {
-  0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.42); }
-  70% { box-shadow: 0 0 0 14px rgba(139, 92, 246, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
 }
 
 @keyframes langSwap {

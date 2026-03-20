@@ -7,6 +7,8 @@ const translations = {
     "nav.contact": "Контакты",
     "controls.lang": "Язык",
     "controls.theme": "Тема",
+    "controls.menuOpen": "Открыть меню",
+    "controls.menuClose": "Закрыть меню",
     "cookie.title": "Cookie notice",
     "cookie.text": "Использую только базовые cookies для корректной работы темы и языка.",
     "cookie.accept": "Понятно",
@@ -74,6 +76,8 @@ const translations = {
     "nav.contact": "Contact",
     "controls.lang": "Language",
     "controls.theme": "Theme",
+    "controls.menuOpen": "Open menu",
+    "controls.menuClose": "Close menu",
     "cookie.title": "Cookie notice",
     "cookie.text": "I only use essential cookies for language and theme preferences.",
     "cookie.accept": "Got it",
@@ -149,14 +153,13 @@ const cookieConsent = document.getElementById("cookieConsent");
 const cookieAccept = document.getElementById("cookieAccept");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = window.matchMedia("(pointer: fine)").matches;
-const mobileViewport = window.matchMedia("(max-width: 700px)");
+const mobileViewport = window.matchMedia("(max-width: 900px)");
 
 let currentLang = localStorage.getItem("site-lang") || "ru";
 let currentTheme = localStorage.getItem("site-theme") || "dark";
 const COOKIE_KEY = "site-cookie-consent";
 const PRELOADER_MIN_MS = 700;
 const preloaderStartedAt = performance.now();
-let lastScrollY = window.scrollY;
 
 function closeMenu() {
   if (!topbar || !menuToggle) {
@@ -164,6 +167,8 @@ function closeMenu() {
   }
   topbar.classList.remove("menu-open");
   menuToggle.setAttribute("aria-expanded", "false");
+  const dict = translations[currentLang] || translations.ru;
+  menuToggle.setAttribute("aria-label", dict["controls.menuOpen"] || "Open menu");
 }
 
 function openMenu() {
@@ -172,6 +177,8 @@ function openMenu() {
   }
   topbar.classList.add("menu-open");
   menuToggle.setAttribute("aria-expanded", "true");
+  const dict = translations[currentLang] || translations.ru;
+  menuToggle.setAttribute("aria-label", dict["controls.menuClose"] || "Close menu");
 }
 
 function toggleMenu() {
@@ -203,6 +210,10 @@ function applyLanguage(lang) {
   currentLang = lang;
   langValue.textContent = lang.toUpperCase();
   document.documentElement.lang = lang;
+  if (menuToggle) {
+    const isOpen = topbar && topbar.classList.contains("menu-open");
+    menuToggle.setAttribute("aria-label", isOpen ? dict["controls.menuClose"] : dict["controls.menuOpen"]);
+  }
   localStorage.setItem("site-lang", lang);
 }
 
@@ -278,45 +289,18 @@ function updateScrollProgress() {
   body.style.setProperty("--scroll", `${progress}%`);
 }
 
-function updateMobileTopbar() {
-  if (!topbar) {
-    return;
-  }
-  if (!mobileViewport.matches) {
-    topbar.classList.remove("is-hidden-mobile");
-    lastScrollY = window.scrollY;
-    return;
-  }
-  const currentY = window.scrollY;
-  const delta = currentY - lastScrollY;
-  const nearTop = currentY < 60;
-  if (topbar.classList.contains("menu-open")) {
-    topbar.classList.remove("is-hidden-mobile");
-    lastScrollY = currentY;
-    return;
-  }
-  if (nearTop || delta < -6) {
-    topbar.classList.remove("is-hidden-mobile");
-  } else if (delta > 6) {
-    topbar.classList.add("is-hidden-mobile");
-  }
-  lastScrollY = currentY;
-}
-
 window.addEventListener("scroll", () => {
   if (scrollRaf) {
     return;
   }
   scrollRaf = window.requestAnimationFrame(() => {
     updateScrollProgress();
-    updateMobileTopbar();
     scrollRaf = null;
   });
 }, { passive: true });
 
 mobileViewport.addEventListener("change", () => {
   closeMenu();
-  updateMobileTopbar();
 });
 
 if (menuToggle && headerMenu) {
@@ -327,6 +311,15 @@ if (menuToggle && headerMenu) {
     });
   });
 }
+
+document.addEventListener("click", (event) => {
+  if (!topbar || !mobileViewport.matches) {
+    return;
+  }
+  if (!topbar.contains(event.target)) {
+    closeMenu();
+  }
+});
 
 window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
@@ -372,5 +365,4 @@ applyLanguage(currentLang);
 applyTheme(currentTheme);
 initCookieConsent();
 updateScrollProgress();
-updateMobileTopbar();
 hidePreloader();
