@@ -1,190 +1,196 @@
 const translations = {
   ru: {
+    "brand.role": "Сети • Безопасность • Автоматизация",
     "nav.about": "Обо мне",
     "nav.services": "Услуги",
-    "nav.projects": "Проекты",
+    "nav.projects": "Кейсы",
     "nav.process": "Процесс",
     "nav.contact": "Контакты",
     "controls.lang": "Язык",
     "controls.theme": "Тема",
     "controls.menuOpen": "Открыть меню",
     "controls.menuClose": "Закрыть меню",
-    "cookie.title": "Cookie notice",
-    "cookie.text": "Использую только базовые cookies для корректной работы темы и языка.",
-    "cookie.accept": "Понятно",
-    "hero.eyebrow": "CYBERSECURITY / NETWORKS / AUTOMATION",
-    "intro.name": "Далгатов Курбан",
-    "intro.badge1": "Python",
-    "intro.badge2": "Networking",
-    "intro.badge3": "Security",
-    "intro.badge4": "Automation",
-    "intro.text": "Проектирую и поддерживаю IT-инфраструктуру: сети, серверы и безопасность без простоев.",
-    "why.title": "Почему я",
-    "why.text": "— Практический опыт с реальными системами<br>— Фокус на безопасности, а не только на коде<br>— Подход automation-first<br>— Чистые и масштабируемые решения",
+    "hero.eyebrow": "Сети, безопасность, автоматизация",
+    "hero.title": "Делаю IT-инфраструктуру понятной, устойчивой и безопасной.",
+    "hero.text": "Проектирую и поддерживаю сети, серверы и автоматизацию для малого и среднего бизнеса, чтобы системы работали спокойно и без лишней сложности.",
+    "hero.primaryCta": "Написать в Telegram",
+    "hero.secondaryCta": "Смотреть контакты",
+    "hero.pill1": "Networks",
+    "hero.pill2": "Servers",
+    "hero.pill3": "Security",
+    "hero.pill4": "Automation",
+    "hero.cardLabel": "Быстрый контакт",
+    "hero.cardTitle": "Проще всего написать в Telegram, но все контакты уже на виду.",
+    "hero.stackLabel": "Стек",
     "about.label": "Позиционирование",
-    "about.title": "Инженер, который соединяет безопасность, сеть и разработку в одну рабочую систему.",
-    "about.text": "Создаю защищённые системы, автоматизирую инфраструктуру и защищаю сети от реальных угроз.",
-    "about.stackLabel": "Стек",
-    "stack.1.title": "Инфраструктура",
-    "stack.1.text": "Linux, Nginx, Docker, KVM/Proxmox, WireGuard, резервирование и disaster recovery.",
-    "stack.2.title": "Безопасность",
-    "stack.2.text": "Hardening, firewall-политики, аудит конфигураций, SIEM-интеграции, реагирование на инциденты.",
-    "stack.3.title": "Автоматизация",
-    "stack.3.text": "Python/Bash-скрипты, автоматизация рутины, проверка бэкапов и контроль восстановления.",
+    "about.title": "Помогаю малому и среднему бизнесу выстраивать надёжную IT-инфраструктуру без лишней сложности.",
+    "about.text": "Лучше всего подхожу компаниям, которым нужны понятные сети, рабочая безопасность, стабильные серверы и аккуратная эксплуатация без раздутого enterprise-подхода.",
+    "expertise.1.title": "Инфраструктура",
+    "expertise.1.text": "Linux, Nginx, Docker, KVM/Proxmox, WireGuard, резервирование и disaster recovery.",
+    "expertise.2.title": "Безопасность",
+    "expertise.2.text": "Hardening, firewall-политики, аудит конфигураций, контроль доступа и снижение практических рисков.",
+    "expertise.3.title": "Автоматизация",
+    "expertise.3.text": "Python/Bash-скрипты, автоматизация рутины, проверка бэкапов и контроль восстановления.",
     "services.label": "Что делаю",
-    "services.title": "Услуги, которыми закрываю критичные IT-задачи бизнеса.",
+    "services.title": "Закрываю IT-задачи малого и среднего бизнеса, от которых зависит стабильность работы команды и сервисов.",
     "services.1.title": "Сети и инфраструктура",
-    "services.1.text": "Настройка сети, VLAN, VPN, маршрутизации и защищенного удаленного доступа для офиса и облака.",
+    "services.1.text": "Настраиваю сеть, VPN, VLAN, маршрутизацию и защищённый доступ для офиса, сервера и облака.",
     "services.2.title": "Безопасность и аудит",
-    "services.2.text": "Аудит IT-среды, hardening серверов, firewall-политики, контроль уязвимостей и практическая защита.",
-    "services.3.title": "Серверы и администрирование",
-    "services.3.text": "Развёртывание и настройка Linux/Windows серверов, оптимизация, мониторинг и стабильная эксплуатация.",
+    "services.2.text": "Проверяю конфигурации, закрываю уязвимые места, усиливаю политики доступа и базовую защиту среды.",
+    "services.3.title": "Серверы и эксплуатация",
+    "services.3.text": "Разворачиваю и поддерживаю Linux/Windows-серверы, настраиваю мониторинг и стабильную повседневную работу.",
     "services.4.title": "Автоматизация и бэкапы",
-    "services.4.text": "Автоматизация рутинных задач, настройка резервного копирования и регулярные тесты восстановления данных.",
-    "services.5.title": "Технологическое сопровождение бизнеса",
-    "services.5.text": "Комплексная IT-поддержка: от устранения инцидентов до развития инфраструктуры под рост компании.",
-    "services.6.title": "Разработка цифровых решений",
-    "services.6.text": "Создание Telegram-ботов, сайтов и приложений с последующим сопровождением и развитием.",
+    "services.4.text": "Автоматизирую повторяющиеся задачи, настраиваю резервное копирование и проверяю, что восстановление реально работает.",
     "projects.label": "Кейсы",
-    "projects.title": "Примеры задач, где инженерная строгость дала измеримый результат.",
+    "projects.title": "Типовые задачи, которые уже приходилось решать на практике.",
     "projects.1.title": "Усиление безопасности бизнес-платформы",
-    "projects.1.text": "Провёл аудит серверов и сервисов, выявил уязвимые места и устранил критичные точки риска. Усилил контроль доступа и общую защищённость системы. В результате снизилась вероятность несанкционированного доступа и повысилась стабильность работы.",
+    "projects.1.text": "Аудит серверов и сервисов, устранение критичных точек риска, усиление контроля доступа и общей устойчивости платформы.",
     "projects.2.title": "Система мониторинга и обнаружения проблем",
-    "projects.2.text": "Настроил отслеживание состояния серверов: нагрузка, сеть и работа ключевых сервисов. Организовал централизованный сбор логов и уведомления о сбоях. Это позволило быстрее выявлять проблемы и сократить время простоя.",
+    "projects.2.text": "Мониторинг нагрузки, сети и сервисов, централизованные логи и уведомления, что позволило быстрее замечать сбои и снижать простой.",
     "projects.3.title": "Развёртывание и настройка локального сервера",
-    "projects.3.text": "Развернул и настроил Linux-сервер под прикладные задачи. Организовал удалённый доступ, обеспечил стабильную работу и базовую безопасность системы. Упростил администрирование и дальнейшую поддержку.",
+    "projects.3.text": "Linux-сервер под прикладные задачи, безопасный удалённый доступ, базовая защита и более простое администрирование.",
+    "projects.4.title": "Резервное копирование и контроль восстановления",
+    "projects.4.text": "Настройка бэкапов, проверка сценариев восстановления и снижение риска потери критичных данных для бизнеса.",
     "process.label": "Подход",
-    "process.title": "Прозрачный процесс работы без хаоса и сюрпризов.",
-    "process.1.title": "1. Диагностика",
-    "process.1.text": "Аудит текущей системы, рисков и bottleneck-ов. Формирую карту проблем и приоритеты.",
-    "process.2.title": "2. Архитектура",
-    "process.2.text": "Проектирую целевую схему: сеть, безопасность, деплой, мониторинг и rollback-стратегии.",
-    "process.3.title": "3. Внедрение",
-    "process.3.text": "Пошаговый запуск без простоя критичных сервисов, автоматические проверки на каждом этапе.",
-    "process.4.title": "4. Поддержка",
-    "process.4.text": "Передаю документацию, настраиваю алерты и помогаю команде масштабировать решение дальше.",
+    "process.title": "Работаю спокойно, прозрачно и поэтапно.",
+    "process.1.title": "Диагностика",
+    "process.1.text": "Смотрю на текущее состояние, риски и узкие места, чтобы понять реальную точку старта.",
+    "process.2.title": "Архитектура",
+    "process.2.text": "Собираю понятную схему сети, доступа, защиты, деплоя и дальнейшей эксплуатации.",
+    "process.3.title": "Внедрение",
+    "process.3.text": "Запускаю изменения поэтапно, аккуратно и без лишнего хаоса вокруг критичных сервисов.",
+    "process.4.title": "Поддержка",
+    "process.4.text": "Передаю документацию, алерты и рабочий контур поддержки для дальнейшего развития.",
     "contact.label": "Контакты",
-    "contact.title": "Подключаюсь к задачам, где нужна надёжная работа систем без сбоев и хаоса.",
-    "contact.text": "Свяжитесь со мной в Telegram — обсудим задачу и соберём рабочее решение под ваш контур.",
+    "contact.title": "Если задача уже понятна, написать можно сразу любым удобным способом.",
+    "contact.text": "Быстрее всего отвечаю в Telegram, но email, телефон и GitHub тоже под рукой.",
+    "contact.primaryCta": "Написать в Telegram",
+    "contact.secondaryCta": "Написать на email",
+    "contact.telegramLabel": "Telegram",
+    "contact.emailLabel": "Email",
+    "contact.phoneLabel": "Телефон",
+    "contact.githubLabel": "GitHub",
     "footer": "© {year} Kurban Dalgatov. All rights reserved."
   },
   en: {
+    "brand.role": "Networks • Security • Automation",
     "nav.about": "About",
     "nav.services": "Services",
-    "nav.projects": "Projects",
+    "nav.projects": "Cases",
     "nav.process": "Process",
     "nav.contact": "Contact",
     "controls.lang": "Language",
     "controls.theme": "Theme",
     "controls.menuOpen": "Open menu",
     "controls.menuClose": "Close menu",
-    "cookie.title": "Cookie notice",
-    "cookie.text": "I only use essential cookies for language and theme preferences.",
-    "cookie.accept": "Got it",
-    "hero.eyebrow": "CYBERSECURITY / NETWORKS / AUTOMATION",
-    "intro.name": "Kurban Dalgatov",
-    "intro.badge1": "Python",
-    "intro.badge2": "Networking",
-    "intro.badge3": "Security",
-    "intro.badge4": "Automation",
-    "intro.text": "I design and support IT infrastructure: networks, servers, and security with zero unnecessary downtime.",
-    "why.title": "Why me",
-    "why.text": "— Practical experience with real systems<br>— Focus on security, not just code<br>— Automation-first approach<br>— Clean and scalable solutions",
+    "hero.eyebrow": "Networks, security, automation",
+    "hero.title": "I make IT infrastructure clear, resilient, and secure.",
+    "hero.text": "I design and support networks, servers, and automation for small and mid-sized businesses so systems stay calm in daily use and avoid unnecessary complexity.",
+    "hero.primaryCta": "Message on Telegram",
+    "hero.secondaryCta": "View contacts",
+    "hero.pill1": "Networks",
+    "hero.pill2": "Servers",
+    "hero.pill3": "Security",
+    "hero.pill4": "Automation",
+    "hero.cardLabel": "Quick contact",
+    "hero.cardTitle": "Telegram is the fastest option, but every contact method is already in view.",
+    "hero.stackLabel": "Stack",
     "about.label": "Positioning",
-    "about.title": "Engineer connecting security, networking and development into one reliable system.",
-    "about.text": "I build secure systems, automate infrastructure, and protect networks from real-world threats.",
-    "about.stackLabel": "Stack",
-    "stack.1.title": "Infrastructure",
-    "stack.1.text": "Linux, Nginx, Docker, KVM/Proxmox, WireGuard, failover planning and disaster recovery.",
-    "stack.2.title": "Security",
-    "stack.2.text": "Hardening, firewall policy, config audits, SIEM integrations and incident response procedures.",
-    "stack.3.title": "Automation",
-    "stack.3.text": "Python/Bash tooling, routine automation, backup checks and restore control.",
+    "about.title": "I help small and mid-sized businesses build reliable IT infrastructure without unnecessary complexity.",
+    "about.text": "I am the best fit for companies that need clear networking, practical security, stable servers, and disciplined operations without an oversized enterprise approach.",
+    "expertise.1.title": "Infrastructure",
+    "expertise.1.text": "Linux, Nginx, Docker, KVM/Proxmox, WireGuard, redundancy planning, and disaster recovery.",
+    "expertise.2.title": "Security",
+    "expertise.2.text": "Hardening, firewall policy, configuration audits, access control, and practical risk reduction.",
+    "expertise.3.title": "Automation",
+    "expertise.3.text": "Python/Bash tooling, routine automation, backup checks, and restore control.",
     "services.label": "What I do",
-    "services.title": "Services that cover core IT operations for business growth.",
+    "services.title": "I handle the IT work small and mid-sized businesses rely on for stable teams, services, and day-to-day operations.",
     "services.1.title": "Networks & Infrastructure",
-    "services.1.text": "Network setup, VLAN, VPN, routing and secure remote access for office and cloud environments.",
+    "services.1.text": "I set up networking, VPN, VLAN, routing, and secure access for offices, servers, and cloud environments.",
     "services.2.title": "Security & Audits",
-    "services.2.text": "IT environment audits, server hardening, firewall policies, vulnerability control and practical protection.",
-    "services.3.title": "Servers & Administration",
-    "services.3.text": "Deployment and configuration of Linux/Windows servers, optimization, monitoring and stable operations.",
+    "services.2.text": "I review configurations, close vulnerable points, strengthen access policies, and improve baseline protection.",
+    "services.3.title": "Servers & Operations",
+    "services.3.text": "I deploy and support Linux/Windows servers, set up monitoring, and keep day-to-day operations stable.",
     "services.4.title": "Automation & Backups",
-    "services.4.text": "Routine task automation, backup setup and regular recovery testing.",
-    "services.5.title": "Business IT Support",
-    "services.5.text": "Comprehensive technical support: from incident response to infrastructure growth alongside your company.",
-    "services.6.title": "Digital Product Development",
-    "services.6.text": "Development of Telegram bots, websites and applications with ongoing support and improvements.",
+    "services.4.text": "I automate recurring work, configure backups, and verify that recovery actually works when needed.",
     "projects.label": "Cases",
-    "projects.title": "Examples where engineering discipline delivered measurable impact.",
+    "projects.title": "Typical tasks I have already solved in practice.",
     "projects.1.title": "Business Platform Security Hardening",
-    "projects.1.text": "Conducted a server and service audit, identified vulnerable areas, and removed critical risk points. Strengthened access control and overall system protection. As a result, the risk of unauthorized access decreased and operational stability improved.",
+    "projects.1.text": "Server and service audit, removal of critical risk points, stronger access control, and higher overall platform resilience.",
     "projects.2.title": "Monitoring and Issue Detection System",
-    "projects.2.text": "Configured server health tracking: load, network, and key service availability. Set up centralized log collection and incident alerts. This enabled faster problem detection and reduced downtime.",
+    "projects.2.text": "Monitoring for load, networking, and services, plus centralized logs and alerts that helped detect failures faster and reduce downtime.",
     "projects.3.title": "Local Server Deployment and Configuration",
-    "projects.3.text": "Deployed and configured a Linux server for applied business tasks. Set up remote access, ensured stable operation, and implemented baseline security. Simplified administration and ongoing support.",
+    "projects.3.text": "Linux server deployment for business tasks, secure remote access, baseline protection, and simpler administration.",
+    "projects.4.title": "Backups and Recovery Validation",
+    "projects.4.text": "Backup setup, recovery scenario checks, and lower risk of losing business-critical data.",
     "process.label": "Approach",
-    "process.title": "A transparent workflow with no chaos and no surprises.",
-    "process.1.title": "1. Diagnostics",
-    "process.1.text": "I audit the current setup, key risks and bottlenecks, then define priorities.",
-    "process.2.title": "2. Architecture",
-    "process.2.text": "I design target-state networking, security, deployment, monitoring and rollback strategy.",
-    "process.3.title": "3. Implementation",
-    "process.3.text": "Step-by-step rollout with automated checks and no disruption of critical services.",
-    "process.4.title": "4. Support",
-    "process.4.text": "I transfer documentation, tune alerting and help your team scale the system further.",
+    "process.title": "I work in a calm, transparent, step-by-step way.",
+    "process.1.title": "Diagnostics",
+    "process.1.text": "I review the current state, risks, and bottlenecks to understand the real starting point.",
+    "process.2.title": "Architecture",
+    "process.2.text": "I build a clear scheme for networking, access, security, deployment, and ongoing operations.",
+    "process.3.title": "Implementation",
+    "process.3.text": "Changes are rolled out gradually and carefully, without unnecessary chaos around critical services.",
+    "process.4.title": "Support",
+    "process.4.text": "I hand over documentation, alerts, and a working support contour for further growth.",
     "contact.label": "Contact",
-    "contact.title": "I join projects where systems must run reliably without downtime or chaos.",
-    "contact.text": "Message me on Telegram, and we will discuss your task and shape a practical solution.",
+    "contact.title": "If the task is already clear, you can reach out right away in whichever way is convenient.",
+    "contact.text": "Telegram is the fastest channel, but email, phone, and GitHub are all easy to reach.",
+    "contact.primaryCta": "Message on Telegram",
+    "contact.secondaryCta": "Send an email",
+    "contact.telegramLabel": "Telegram",
+    "contact.emailLabel": "Email",
+    "contact.phoneLabel": "Phone",
+    "contact.githubLabel": "GitHub",
     "footer": "© {year} Kurban Dalgatov. All rights reserved."
   }
 };
 
 const body = document.body;
-const preloader = document.getElementById("preloader");
 const topbar = document.querySelector(".topbar");
 const menuToggle = document.getElementById("menuToggle");
 const headerMenu = document.getElementById("headerMenu");
 const langToggle = document.getElementById("langToggle");
 const langValue = document.getElementById("langValue");
 const themeToggle = document.getElementById("themeToggle");
-const sections = document.querySelectorAll(".section, .intro-profile, .why-card, .footer");
 const revealItems = document.querySelectorAll(".reveal");
-const cookieConsent = document.getElementById("cookieConsent");
-const cookieAccept = document.getElementById("cookieAccept");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const finePointer = window.matchMedia("(pointer: fine)").matches;
-const mobileViewport = window.matchMedia("(max-width: 900px)");
+const mobileViewport = window.matchMedia("(max-width: 920px)");
+const THEME_KEY = "site-theme-v2";
 
-let currentLang = localStorage.getItem("site-lang") || "ru";
-let currentTheme = localStorage.getItem("site-theme") || "light";
-const COOKIE_KEY = "site-cookie-consent";
-const PRELOADER_MIN_MS = mobileViewport.matches ? 180 : 700;
-const preloaderStartedAt = performance.now();
+let currentLang = localStorage.getItem("site-lang") || document.documentElement.lang || "ru";
+let currentTheme = localStorage.getItem(THEME_KEY) || body.dataset.theme || "dark";
+
+function getDictionary() {
+  return translations[currentLang] || translations.ru;
+}
 
 function closeMenu() {
   if (!topbar || !menuToggle) {
     return;
   }
+
   topbar.classList.remove("menu-open");
   menuToggle.setAttribute("aria-expanded", "false");
-  const dict = translations[currentLang] || translations.ru;
-  menuToggle.setAttribute("aria-label", dict["controls.menuOpen"] || "Open menu");
+  menuToggle.setAttribute("aria-label", getDictionary()["controls.menuOpen"] || "Open menu");
 }
 
 function openMenu() {
   if (!topbar || !menuToggle) {
     return;
   }
+
   topbar.classList.add("menu-open");
   menuToggle.setAttribute("aria-expanded", "true");
-  const dict = translations[currentLang] || translations.ru;
-  menuToggle.setAttribute("aria-label", dict["controls.menuClose"] || "Close menu");
+  menuToggle.setAttribute("aria-label", getDictionary()["controls.menuClose"] || "Close menu");
 }
 
 function toggleMenu() {
   if (!topbar) {
     return;
   }
+
   const isOpen = topbar.classList.contains("menu-open");
   if (isOpen) {
     closeMenu();
@@ -198,116 +204,74 @@ function applyLanguage(lang) {
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.dataset.i18n;
-    if (dict[key]) {
-      if (key === "footer") {
-        node.innerHTML = dict[key].replace("{year}", String(new Date().getFullYear()));
-      } else {
-        node.innerHTML = dict[key];
-      }
+    if (!dict[key]) {
+      return;
     }
+
+    if (key === "footer") {
+      node.innerHTML = dict[key].replace("{year}", String(new Date().getFullYear()));
+      return;
+    }
+
+    node.innerHTML = dict[key];
   });
 
   currentLang = lang;
-  langValue.textContent = lang.toUpperCase();
   document.documentElement.lang = lang;
+
+  if (langValue) {
+    langValue.textContent = lang.toUpperCase();
+  }
+
+  if (langToggle) {
+    langToggle.setAttribute("aria-label", dict["controls.lang"] || "Language");
+  }
+
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-label", dict["controls.theme"] || "Theme");
+  }
+
   if (menuToggle) {
     const isOpen = topbar && topbar.classList.contains("menu-open");
     menuToggle.setAttribute("aria-label", isOpen ? dict["controls.menuClose"] : dict["controls.menuOpen"]);
   }
+
   localStorage.setItem("site-lang", lang);
 }
 
 function applyTheme(theme) {
-  currentTheme = theme;
-  body.setAttribute("data-theme", theme);
-  localStorage.setItem("site-theme", theme);
+  currentTheme = theme === "dark" ? "dark" : "light";
+  body.dataset.theme = currentTheme;
+  localStorage.setItem(THEME_KEY, currentTheme);
 }
 
-langToggle.addEventListener("click", () => {
-  langToggle.classList.add("switching");
-  const nextLang = currentLang === "ru" ? "en" : "ru";
-  applyLanguage(nextLang);
-  window.setTimeout(() => langToggle.classList.remove("switching"), 420);
-});
-
-themeToggle.addEventListener("click", () => {
-  const nextTheme = currentTheme === "dark" ? "light" : "dark";
-  applyTheme(nextTheme);
-  themeToggle.animate(
-    [
-      { transform: "translateY(0) scale(1)" },
-      { transform: "translateY(-3px) scale(1.04)" },
-      { transform: "translateY(0) scale(1)" }
-    ],
-    { duration: 280, easing: "cubic-bezier(.22,.61,.36,1)" }
-  );
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("in-view");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-if (!reduceMotion) {
-  revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("in-view"));
-}
-
-if (!reduceMotion && finePointer) {
-  sections.forEach((section) => {
-    let rafId = null;
-    let cx = 0;
-    let cy = 0;
-
-    section.addEventListener("mousemove", (event) => {
-      cx = event.clientX;
-      cy = event.clientY;
-      if (rafId) {
-        return;
-      }
-      rafId = window.requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-        const x = ((cx - rect.left) / rect.width) * 100;
-        const y = ((cy - rect.top) / rect.height) * 100;
-        section.style.setProperty("--mx", `${x}%`);
-        section.style.setProperty("--my", `${y}%`);
-        rafId = null;
-      });
-    }, { passive: true });
-  });
-}
-
-let scrollRaf = null;
-function updateScrollProgress() {
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
-  body.style.setProperty("--scroll", `${progress}%`);
-}
-
-window.addEventListener("scroll", () => {
-  if (scrollRaf) {
+function syncTopbarState() {
+  if (!topbar) {
     return;
   }
-  if (mobileViewport.matches && topbar && topbar.classList.contains("menu-open")) {
-    closeMenu();
-  }
-  scrollRaf = window.requestAnimationFrame(() => {
-    updateScrollProgress();
-    scrollRaf = null;
-  });
-}, { passive: true });
 
-mobileViewport.addEventListener("change", () => {
-  closeMenu();
-});
+  topbar.classList.toggle("is-scrolled", window.scrollY > 18);
+}
+
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    langToggle.classList.add("switching");
+    applyLanguage(currentLang === "ru" ? "en" : "ru");
+    window.setTimeout(() => {
+      langToggle.classList.remove("switching");
+    }, 360);
+  });
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    applyTheme(currentTheme === "dark" ? "light" : "dark");
+  });
+}
 
 if (menuToggle && headerMenu) {
   menuToggle.addEventListener("click", toggleMenu);
+
   headerMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       closeMenu();
@@ -315,10 +279,26 @@ if (menuToggle && headerMenu) {
   });
 }
 
+if (!reduceMotion && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16 });
+
+  revealItems.forEach((item) => observer.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("in-view"));
+}
+
 document.addEventListener("click", (event) => {
   if (!topbar || !mobileViewport.matches) {
     return;
   }
+
   if (!topbar.contains(event.target)) {
     closeMenu();
   }
@@ -330,42 +310,10 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-function initCookieConsent() {
-  if (!cookieConsent || !cookieAccept) {
-    return;
-  }
-  if (localStorage.getItem(COOKIE_KEY) === "accepted") {
-    cookieConsent.setAttribute("aria-hidden", "true");
-    return;
-  }
-  window.requestAnimationFrame(() => {
-    cookieConsent.classList.add("is-visible");
-    cookieConsent.setAttribute("aria-hidden", "false");
-  });
-  cookieAccept.addEventListener("click", () => {
-    localStorage.setItem(COOKIE_KEY, "accepted");
-    cookieConsent.classList.remove("is-visible");
-    cookieConsent.setAttribute("aria-hidden", "true");
-  });
-}
+window.addEventListener("scroll", syncTopbarState, { passive: true });
+mobileViewport.addEventListener("change", closeMenu);
 
-function hidePreloader() {
-  if (!preloader) {
-    body.classList.remove("preloading");
-    return;
-  }
-  const elapsed = performance.now() - preloaderStartedAt;
-  const delay = Math.max(0, PRELOADER_MIN_MS - elapsed);
-  window.setTimeout(() => {
-    preloader.classList.add("is-hidden");
-    preloader.setAttribute("aria-hidden", "true");
-    body.classList.remove("preloading");
-    window.setTimeout(() => preloader.remove(), reduceMotion ? 0 : 380);
-  }, delay);
-}
-
-applyLanguage(currentLang);
+applyLanguage(currentLang === "en" ? "en" : "ru");
 applyTheme(currentTheme);
-initCookieConsent();
-updateScrollProgress();
-hidePreloader();
+syncTopbarState();
+closeMenu();
