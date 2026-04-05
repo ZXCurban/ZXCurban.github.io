@@ -187,8 +187,24 @@ const CONTACT_VALUES = {
   phone: [43, 55, 57, 54, 51, 52, 48, 51, 55, 53, 52, 50]
 };
 
-let currentLang = localStorage.getItem("site-lang") || document.documentElement.lang || "ru";
-let currentTheme = localStorage.getItem(THEME_KEY) || body.dataset.theme || "dark";
+function readStorage(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    // Storage can be unavailable in restricted or private contexts.
+  }
+}
+
+let currentLang = readStorage("site-lang") || document.documentElement.lang || "ru";
+let currentTheme = readStorage(THEME_KEY) || body.dataset.theme || "dark";
 
 function getDictionary() {
   return translations[currentLang] || translations.ru;
@@ -314,13 +330,13 @@ function applyLanguage(lang) {
     menuToggle.setAttribute("aria-label", isOpen ? dict["controls.menuClose"] : dict["controls.menuOpen"]);
   }
 
-  localStorage.setItem("site-lang", lang);
+  writeStorage("site-lang", lang);
 }
 
 function applyTheme(theme) {
   currentTheme = theme === "dark" ? "dark" : "light";
   body.dataset.theme = currentTheme;
-  localStorage.setItem(THEME_KEY, currentTheme);
+  writeStorage(THEME_KEY, currentTheme);
 
   if (themeColorMeta) {
     themeColorMeta.setAttribute("content", currentTheme === "dark" ? "#0f1614" : "#f4efe7");
@@ -333,6 +349,21 @@ function syncTopbarState() {
   }
 
   topbar.classList.toggle("is-scrolled", window.scrollY > 18);
+}
+
+function bindMediaQueryChange(query, callback) {
+  if (!query) {
+    return;
+  }
+
+  if (typeof query.addEventListener === "function") {
+    query.addEventListener("change", callback);
+    return;
+  }
+
+  if (typeof query.addListener === "function") {
+    query.addListener(callback);
+  }
 }
 
 if (langToggle) {
@@ -393,7 +424,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("scroll", syncTopbarState, { passive: true });
-mobileViewport.addEventListener("change", () => {
+bindMediaQueryChange(mobileViewport, () => {
   closeMenu();
   syncMenuAccessibility();
 });
