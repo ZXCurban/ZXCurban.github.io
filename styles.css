@@ -112,6 +112,7 @@ svg {
   filter: blur(10px);
   opacity: 0.85;
   animation: orbFloat 18s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .orb-a {
@@ -163,7 +164,7 @@ body[data-theme="dark"] .page-grid {
   border: 1px solid var(--stroke);
   border-radius: 999px;
   background: color-mix(in oklab, var(--surface-strong), transparent 12%);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(14px);
   box-shadow: 0 18px 40px rgba(22, 33, 29, 0.08);
   transition: background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
 }
@@ -792,11 +793,13 @@ body[data-theme="dark"] .theme-icon .moon {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  will-change: opacity, transform;
 }
 
 .reveal.in-view {
   opacity: 1;
   transform: none;
+  will-change: auto;
 }
 
 @media (hover: hover) {
@@ -887,8 +890,8 @@ body[data-theme="dark"] .theme-icon .moon {
     border: 1px solid transparent;
     border-radius: 28px;
     background: color-mix(in oklab, var(--surface-strong), transparent 8%);
-    backdrop-filter: blur(18px);
-    transition: max-height 0.25s var(--ease), padding 0.25s var(--ease), opacity 0.2s var(--ease), transform 0.25s var(--ease), border-color 0.25s var(--ease);
+    backdrop-filter: blur(12px);
+    transition: max-height 0.24s var(--ease), padding 0.24s var(--ease), opacity 0.18s var(--ease), transform 0.24s var(--ease), border-color 0.24s var(--ease);
   }
 
   .topbar.menu-open .header-menu {
@@ -952,8 +955,8 @@ body[data-theme="dark"] .theme-icon .moon {
 
   .page-orb {
     animation: none;
-    filter: blur(26px);
-    opacity: 0.52;
+    filter: blur(18px);
+    opacity: 0.46;
   }
 
   .orb-a {
@@ -1042,9 +1045,9 @@ body[data-theme="dark"] .theme-icon .moon {
   }
 
   .reveal {
-    opacity: 1;
     transform: none;
-    transition: none;
+    transition: opacity 0.4s var(--ease);
+    will-change: opacity;
   }
 }
 
@@ -1156,6 +1159,37 @@ body[data-theme="dark"] .theme-icon .moon {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .topbar {
+    box-shadow: 0 14px 28px rgba(22, 33, 29, 0.08);
+  }
+
+  .topbar.is-scrolled {
+    box-shadow: 0 16px 32px rgba(22, 33, 29, 0.1);
+  }
+
+  .topbar,
+  .header-menu {
+    backdrop-filter: blur(10px);
+  }
+
+  .control-btn,
+  .menu-toggle,
+  .button,
+  .expertise-card,
+  .service-card,
+  .project-card,
+  .timeline-step,
+  .contact-method {
+    transition:
+      transform 0.18s var(--ease),
+      border-color 0.18s var(--ease),
+      background-color 0.18s var(--ease),
+      color 0.18s var(--ease),
+      opacity 0.18s var(--ease);
   }
 }
 

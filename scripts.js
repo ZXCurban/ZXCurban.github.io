@@ -205,6 +205,7 @@ function writeStorage(key, value) {
 
 let currentLang = readStorage("site-lang") || document.documentElement.lang || "ru";
 let currentTheme = readStorage(THEME_KEY) || body.dataset.theme || "dark";
+let topbarScrollTicking = false;
 
 function getDictionary() {
   return translations[currentLang] || translations.ru;
@@ -229,6 +230,19 @@ function getProtectedContactHref(kind) {
   return `${scheme}${value}`;
 }
 
+function getContactDisplayValue(kind) {
+  const value = decodeContact(kind);
+  if (!value) {
+    return "";
+  }
+
+  if (kind === "phone") {
+    return value.replace(/^(\+7)(\d{3})(\d{3})(\d{2})(\d{2})$/, "$1 $2 $3-$4-$5");
+  }
+
+  return value;
+}
+
 function bindProtectedContacts() {
   document.querySelectorAll("[data-protected-contact]").forEach((node) => {
     const kind = node.dataset.protectedContact;
@@ -238,6 +252,16 @@ function bindProtectedContacts() {
     }
 
     node.setAttribute("href", href);
+  });
+
+  document.querySelectorAll("[data-contact-display]").forEach((node) => {
+    const kind = node.dataset.contactDisplay;
+    const value = getContactDisplayValue(kind);
+    if (!value) {
+      return;
+    }
+
+    node.textContent = value;
   });
 }
 
@@ -351,6 +375,18 @@ function syncTopbarState() {
   topbar.classList.toggle("is-scrolled", window.scrollY > 18);
 }
 
+function requestTopbarStateSync() {
+  if (topbarScrollTicking) {
+    return;
+  }
+
+  topbarScrollTicking = true;
+  window.requestAnimationFrame(() => {
+    syncTopbarState();
+    topbarScrollTicking = false;
+  });
+}
+
 function bindMediaQueryChange(query, callback) {
   if (!query) {
     return;
@@ -392,7 +428,10 @@ if (menuToggle && headerMenu) {
   });
 }
 
-if (!reduceMotion && !mobileViewport.matches && "IntersectionObserver" in window) {
+if (!reduceMotion && "IntersectionObserver" in window) {
+  const revealOptions = mobileViewport.matches
+    ? { threshold: 0.08, rootMargin: "0px 0px -6% 0px" }
+    : { threshold: 0.16, rootMargin: "0px 0px -10% 0px" };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -400,7 +439,7 @@ if (!reduceMotion && !mobileViewport.matches && "IntersectionObserver" in window
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.16 });
+  }, revealOptions);
 
   revealItems.forEach((item) => observer.observe(item));
 } else {
@@ -423,7 +462,7 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-window.addEventListener("scroll", syncTopbarState, { passive: true });
+window.addEventListener("scroll", requestTopbarStateSync, { passive: true });
 bindMediaQueryChange(mobileViewport, () => {
   closeMenu();
   syncMenuAccessibility();
