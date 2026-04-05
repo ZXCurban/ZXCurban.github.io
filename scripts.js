@@ -279,7 +279,7 @@ if (menuToggle && headerMenu) {
   });
 }
 
-if (!reduceMotion && "IntersectionObserver" in window) {
+if (!reduceMotion && !mobileViewport.matches && "IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
