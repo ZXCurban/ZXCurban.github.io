@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   --bg: #f4efe7;
   --surface: rgba(255, 251, 246, 0.76);
   --surface-strong: rgba(255, 253, 248, 0.92);
@@ -60,6 +60,26 @@ body {
     radial-gradient(circle at 8% 18%, rgba(198, 119, 83, 0.12), transparent 28%),
     var(--bg);
   transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  z-index: 120;
+  transform: translateY(-150%);
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #f9fcf9;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 14px 28px color-mix(in oklab, var(--accent), transparent 70%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 ::selection {
@@ -574,6 +594,22 @@ body[data-theme="dark"] .theme-icon .moon {
   transition: color 0.2s ease;
 }
 
+.obfuscated-contact {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.28em;
+}
+
+.contact-token {
+  white-space: nowrap;
+}
+
+.contact-separator {
+  color: var(--muted);
+  font-weight: 600;
+}
+
 .mini-panel {
   margin-top: auto;
   padding-top: 18px;
@@ -726,6 +762,23 @@ body[data-theme="dark"] .theme-icon .moon {
 .contact-list a,
 .contact-method strong {
   overflow-wrap: anywhere;
+}
+
+.nav a:focus-visible,
+.button:focus-visible,
+.control-btn:focus-visible,
+.menu-toggle:focus-visible,
+.contact-list a:focus-visible,
+.contact-method:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent), white 12%);
+  outline-offset: 3px;
+}
+
+.contact-fallback {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .footer {

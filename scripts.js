@@ -1,6 +1,11 @@
 const translations = {
   ru: {
+    "meta.title": "Курбан Далгатов | Инфраструктура, безопасность, автоматизация",
+    "meta.description": "Сайт-визитка Курбана Далгатова: сети, серверы, безопасность, автоматизация и поддержка инфраструктуры для малого и среднего бизнеса.",
+    "a11y.skip": "Перейти к содержимому",
+    "brand.ariaLabel": "Главная страница Kurban Dalgatov",
     "brand.role": "Сети • Безопасность • Автоматизация",
+    "nav.ariaLabel": "Основная навигация",
     "nav.about": "Обо мне",
     "nav.services": "Услуги",
     "nav.projects": "Кейсы",
@@ -8,6 +13,8 @@ const translations = {
     "nav.contact": "Контакты",
     "controls.lang": "Язык",
     "controls.theme": "Тема",
+    "controls.langAria": "Переключить язык",
+    "controls.themeAria": "Переключить тему",
     "controls.menuOpen": "Открыть меню",
     "controls.menuClose": "Закрыть меню",
     "hero.eyebrow": "Сети, безопасность, автоматизация",
@@ -15,10 +22,10 @@ const translations = {
     "hero.text": "Проектирую и поддерживаю сети, серверы и автоматизацию для малого и среднего бизнеса, чтобы системы работали спокойно и без лишней сложности.",
     "hero.primaryCta": "Написать в Telegram",
     "hero.secondaryCta": "Смотреть контакты",
-    "hero.pill1": "Networks",
-    "hero.pill2": "Servers",
-    "hero.pill3": "Security",
-    "hero.pill4": "Automation",
+    "hero.pill1": "Сети",
+    "hero.pill2": "Серверы",
+    "hero.pill3": "Безопасность",
+    "hero.pill4": "Автоматизация",
     "hero.cardLabel": "Быстрый контакт",
     "hero.cardTitle": "Проще всего написать в Telegram, но все контакты уже на виду.",
     "hero.stackLabel": "Стек",
@@ -70,10 +77,15 @@ const translations = {
     "contact.emailLabel": "Email",
     "contact.phoneLabel": "Телефон",
     "contact.githubLabel": "GitHub",
-    "footer": "© {year} Kurban Dalgatov. All rights reserved."
+    "footer": "© Kurban Dalgatov. All rights reserved."
   },
   en: {
+    "meta.title": "Kurban Dalgatov | Infrastructure, Security & Automation",
+    "meta.description": "Business card site of Kurban Dalgatov: networks, servers, security, automation, and infrastructure support for small and mid-sized businesses.",
+    "a11y.skip": "Skip to content",
+    "brand.ariaLabel": "Kurban Dalgatov home page",
     "brand.role": "Networks • Security • Automation",
+    "nav.ariaLabel": "Primary navigation",
     "nav.about": "About",
     "nav.services": "Services",
     "nav.projects": "Cases",
@@ -81,6 +93,8 @@ const translations = {
     "nav.contact": "Contact",
     "controls.lang": "Language",
     "controls.theme": "Theme",
+    "controls.langAria": "Switch language",
+    "controls.themeAria": "Switch theme",
     "controls.menuOpen": "Open menu",
     "controls.menuClose": "Close menu",
     "hero.eyebrow": "Networks, security, automation",
@@ -143,27 +157,81 @@ const translations = {
     "contact.emailLabel": "Email",
     "contact.phoneLabel": "Phone",
     "contact.githubLabel": "GitHub",
-    "footer": "© {year} Kurban Dalgatov. All rights reserved."
+    "footer": "© Kurban Dalgatov. All rights reserved."
   }
 };
 
 const body = document.body;
+const documentRoot = document.documentElement;
 const topbar = document.querySelector(".topbar");
+const brandLink = document.getElementById("brandLink");
+const siteNav = document.getElementById("siteNav");
 const menuToggle = document.getElementById("menuToggle");
 const headerMenu = document.getElementById("headerMenu");
 const langToggle = document.getElementById("langToggle");
 const langValue = document.getElementById("langValue");
 const themeToggle = document.getElementById("themeToggle");
+const metaDescription = document.getElementById("metaDescription");
+const themeColorMeta = document.getElementById("themeColorMeta");
+const i18nNodes = document.querySelectorAll("[data-i18n]");
 const revealItems = document.querySelectorAll(".reveal");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const mobileViewport = window.matchMedia("(max-width: 920px)");
 const THEME_KEY = "site-theme-v2";
+const CONTACT_SCHEMES = {
+  email: "mailto:",
+  phone: "tel:"
+};
+const CONTACT_VALUES = {
+  email: [100, 97, 108, 108, 103, 97, 116, 111, 118, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109],
+  phone: [43, 55, 57, 54, 51, 52, 48, 51, 55, 53, 52, 50]
+};
 
 let currentLang = localStorage.getItem("site-lang") || document.documentElement.lang || "ru";
 let currentTheme = localStorage.getItem(THEME_KEY) || body.dataset.theme || "dark";
 
 function getDictionary() {
   return translations[currentLang] || translations.ru;
+}
+
+function decodeContact(kind) {
+  const codes = CONTACT_VALUES[kind];
+  if (!codes) {
+    return "";
+  }
+
+  return String.fromCharCode(...codes);
+}
+
+function getProtectedContactHref(kind) {
+  const scheme = CONTACT_SCHEMES[kind];
+  const value = decodeContact(kind);
+  if (!scheme || !value) {
+    return "";
+  }
+
+  return `${scheme}${value}`;
+}
+
+function bindProtectedContacts() {
+  document.querySelectorAll("[data-protected-contact]").forEach((node) => {
+    const kind = node.dataset.protectedContact;
+    const href = getProtectedContactHref(kind);
+    if (!href) {
+      return;
+    }
+
+    node.setAttribute("href", href);
+  });
+}
+
+function syncMenuAccessibility() {
+  if (!headerMenu) {
+    return;
+  }
+
+  const isMenuHidden = mobileViewport.matches && !topbar?.classList.contains("menu-open");
+  headerMenu.setAttribute("aria-hidden", isMenuHidden ? "true" : "false");
 }
 
 function closeMenu() {
@@ -174,6 +242,7 @@ function closeMenu() {
   topbar.classList.remove("menu-open");
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-label", getDictionary()["controls.menuOpen"] || "Open menu");
+  syncMenuAccessibility();
 }
 
 function openMenu() {
@@ -184,6 +253,7 @@ function openMenu() {
   topbar.classList.add("menu-open");
   menuToggle.setAttribute("aria-expanded", "true");
   menuToggle.setAttribute("aria-label", getDictionary()["controls.menuClose"] || "Close menu");
+  syncMenuAccessibility();
 }
 
 function toggleMenu() {
@@ -202,33 +272,41 @@ function toggleMenu() {
 function applyLanguage(lang) {
   const dict = translations[lang] || translations.ru;
 
-  document.querySelectorAll("[data-i18n]").forEach((node) => {
+  i18nNodes.forEach((node) => {
     const key = node.dataset.i18n;
     if (!dict[key]) {
       return;
     }
 
-    if (key === "footer") {
-      node.innerHTML = dict[key].replace("{year}", String(new Date().getFullYear()));
-      return;
-    }
-
-    node.innerHTML = dict[key];
+    node.textContent = dict[key];
   });
 
   currentLang = lang;
-  document.documentElement.lang = lang;
+  documentRoot.lang = lang;
+  document.title = dict["meta.title"] || document.title;
+
+  if (metaDescription && dict["meta.description"]) {
+    metaDescription.setAttribute("content", dict["meta.description"]);
+  }
 
   if (langValue) {
     langValue.textContent = lang.toUpperCase();
   }
 
+  if (brandLink) {
+    brandLink.setAttribute("aria-label", dict["brand.ariaLabel"] || "Home");
+  }
+
+  if (siteNav) {
+    siteNav.setAttribute("aria-label", dict["nav.ariaLabel"] || "Primary navigation");
+  }
+
   if (langToggle) {
-    langToggle.setAttribute("aria-label", dict["controls.lang"] || "Language");
+    langToggle.setAttribute("aria-label", dict["controls.langAria"] || "Language");
   }
 
   if (themeToggle) {
-    themeToggle.setAttribute("aria-label", dict["controls.theme"] || "Theme");
+    themeToggle.setAttribute("aria-label", dict["controls.themeAria"] || "Theme");
   }
 
   if (menuToggle) {
@@ -243,6 +321,10 @@ function applyTheme(theme) {
   currentTheme = theme === "dark" ? "dark" : "light";
   body.dataset.theme = currentTheme;
   localStorage.setItem(THEME_KEY, currentTheme);
+
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute("content", currentTheme === "dark" ? "#0f1614" : "#f4efe7");
+  }
 }
 
 function syncTopbarState() {
@@ -311,9 +393,13 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("scroll", syncTopbarState, { passive: true });
-mobileViewport.addEventListener("change", closeMenu);
+mobileViewport.addEventListener("change", () => {
+  closeMenu();
+  syncMenuAccessibility();
+});
 
 applyLanguage(currentLang === "en" ? "en" : "ru");
 applyTheme(currentTheme);
+bindProtectedContacts();
 syncTopbarState();
 closeMenu();

@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Сайт-визитка Курбана Далгатова: сети, серверы, безопасность, автоматизация и поддержка инфраструктуры.">
-<title>Kurban Dalgatov | Infrastructure, Security & Automation</title>
+<meta name="description" content="Сайт-визитка Курбана Далгатова: сети, серверы, безопасность, автоматизация и поддержка инфраструктуры для малого и среднего бизнеса." id="metaDescription">
+<meta name="theme-color" content="#0f1614" id="themeColorMeta">
+<title>Курбан Далгатов | Инфраструктура, безопасность, автоматизация</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-theme="dark">
+<a class="skip-link" href="#content" data-i18n="a11y.skip">Перейти к содержимому</a>
 <div class="page-bg" aria-hidden="true">
   <span class="page-orb orb-a"></span>
   <span class="page-orb orb-b"></span>
@@ -19,7 +21,7 @@
 
 <div class="site-shell">
   <header class="topbar">
-    <a href="#home" class="brand" aria-label="Kurban Dalgatov home">
+    <a href="#home" class="brand" aria-label="Главная страница Kurban Dalgatov" id="brandLink">
       <span class="brand-mark" aria-hidden="true">KD</span>
       <span class="brand-copy">
         <strong>Kurban Dalgatov</strong>
@@ -34,7 +36,7 @@
     </button>
 
     <div class="header-menu" id="headerMenu">
-      <nav class="nav">
+      <nav class="nav" id="siteNav" aria-label="Основная навигация">
         <a href="#about" data-i18n="nav.about">Обо мне</a>
         <a href="#services" data-i18n="nav.services">Услуги</a>
         <a href="#projects" data-i18n="nav.projects">Кейсы</a>
@@ -69,7 +71,7 @@
     </div>
   </header>
 
-  <main class="content">
+  <main class="content" id="content" tabindex="-1">
     <section class="hero reveal" id="home">
       <div class="hero-copy">
         <p class="eyebrow" data-i18n="hero.eyebrow">Сети, безопасность, автоматизация</p>
@@ -82,10 +84,10 @@
         </div>
 
         <div class="hero-pills">
-          <span data-i18n="hero.pill1">Networks</span>
-          <span data-i18n="hero.pill2">Servers</span>
-          <span data-i18n="hero.pill3">Security</span>
-          <span data-i18n="hero.pill4">Automation</span>
+          <span data-i18n="hero.pill1">Сети</span>
+          <span data-i18n="hero.pill2">Серверы</span>
+          <span data-i18n="hero.pill3">Безопасность</span>
+          <span data-i18n="hero.pill4">Автоматизация</span>
         </div>
       </div>
 
@@ -100,11 +102,23 @@
           </li>
           <li>
             <span data-i18n="contact.emailLabel">Email</span>
-            <a href="mailto:dallgatov@gmail.com">dallgatov@gmail.com</a>
+            <a href="#contact" data-protected-contact="email" class="obfuscated-contact">
+              <span class="contact-token">dallgatov</span>
+              <span class="contact-separator">[at]</span>
+              <span class="contact-token">gmail</span>
+              <span class="contact-separator">[dot]</span>
+              <span class="contact-token">com</span>
+            </a>
           </li>
           <li>
             <span data-i18n="contact.phoneLabel">Телефон</span>
-            <a href="tel:+79634037542">+7 (963) 403-75-42</a>
+            <a href="#contact" data-protected-contact="phone" class="obfuscated-contact">
+              <span class="contact-token">+7</span>
+              <span class="contact-token">963</span>
+              <span class="contact-token">403</span>
+              <span class="contact-token">75</span>
+              <span class="contact-token">42</span>
+            </a>
           </li>
           <li>
             <span data-i18n="contact.githubLabel">GitHub</span>
@@ -264,8 +278,12 @@
 
         <div class="hero-actions">
           <a class="button button-primary" href="https://t.me/ZXCurban" target="_blank" rel="noopener noreferrer" data-i18n="contact.primaryCta">Написать в Telegram</a>
-          <a class="button button-secondary" href="mailto:dallgatov@gmail.com" data-i18n="contact.secondaryCta">Написать на email</a>
+          <a class="button button-secondary" href="#contact" data-protected-contact="email" data-i18n="contact.secondaryCta">Написать на email</a>
         </div>
+
+        <noscript>
+          <p class="contact-fallback" data-noscript-contact>Если JavaScript отключён, для быстрой связи напишите мне в Telegram: @ZXCurban.</p>
+        </noscript>
       </div>
 
       <div class="contact-card-grid">
@@ -274,14 +292,26 @@
           <strong>@ZXCurban</strong>
         </a>
 
-        <a class="contact-method" href="mailto:dallgatov@gmail.com">
+        <a class="contact-method" href="#contact" data-protected-contact="email">
           <span class="contact-method-label" data-i18n="contact.emailLabel">Email</span>
-          <strong>dallgatov@gmail.com</strong>
+          <strong class="obfuscated-contact">
+            <span class="contact-token">dallgatov</span>
+            <span class="contact-separator">[at]</span>
+            <span class="contact-token">gmail</span>
+            <span class="contact-separator">[dot]</span>
+            <span class="contact-token">com</span>
+          </strong>
         </a>
 
-        <a class="contact-method" href="tel:+79634037542">
+        <a class="contact-method" href="#contact" data-protected-contact="phone">
           <span class="contact-method-label" data-i18n="contact.phoneLabel">Телефон</span>
-          <strong>+7 (963) 403-75-42</strong>
+          <strong class="obfuscated-contact">
+            <span class="contact-token">+7</span>
+            <span class="contact-token">963</span>
+            <span class="contact-token">403</span>
+            <span class="contact-token">75</span>
+            <span class="contact-token">42</span>
+          </strong>
         </a>
 
         <a class="contact-method" href="https://github.com/ZXCurban" target="_blank" rel="noopener noreferrer">
@@ -293,7 +323,7 @@
   </main>
 
   <footer class="footer reveal">
-    <p data-i18n="footer">© {year} Kurban Dalgatov. All rights reserved.</p>
+    <p data-i18n="footer">© Kurban Dalgatov. All rights reserved.</p>
   </footer>
 </div>
 

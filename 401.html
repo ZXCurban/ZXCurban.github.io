@@ -3,39 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ошибка 401 на сайте Kurban Dalgatov">
+<meta name="description" content="Ошибка 401 на сайте Kurban Dalgatov. Для доступа нужна авторизация.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f1614">
 <title>401 | Kurban Dalgatov</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="error-styles.css">
 </head>
 <body>
-<svg class="bg-circuit" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <defs>
-    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="rgba(139, 92, 246, 0.12)" />
-      <stop offset="45%" stop-color="rgba(139, 92, 246, 0.9)" />
-      <stop offset="100%" stop-color="rgba(34, 211, 238, 0.88)" />
-    </linearGradient>
-  </defs>
-  <path class="circuit-line" d="M 50 130 H 420 V 280 H 760 V 120 H 1200 V 300 H 1510" />
-  <path class="circuit-line slow" d="M 140 460 H 560 V 580 H 890 V 430 H 1330 V 700 H 1510" />
-  <path class="circuit-line" d="M 40 820 H 470 V 680 H 1020 V 860 H 1480" />
-  <path class="circuit-line slow" d="M 260 20 V 220 H 130 V 430 H 350 V 720 H 170 V 980" />
-</svg>
+<div class="page-bg" aria-hidden="true">
+  <span class="page-orb orb-a"></span>
+  <span class="page-orb orb-b"></span>
+  <span class="page-grid"></span>
+</div>
 
-<main class="wrapper">
-  <section class="card">
-    <span class="badge">SYSTEM ERROR</span>
-    <h1 class="code">401</h1>
-    <h2 class="title">Требуется авторизация</h2>
-    <p class="text">Доступ к этой странице возможен только после входа в систему.</p>
-    <div class="actions">
-      <a class="btn" href="/index.html">На главную</a>
-      <a class="btn-ghost" href="https://t.me/ZXCurban" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+<main class="error-shell">
+  <a class="error-brand" href="/" aria-label="На главную страницу Kurban Dalgatov">
+    <span class="error-brand-mark" aria-hidden="true">KD</span>
+    <span class="error-brand-copy">
+      <strong>Kurban Dalgatov</strong>
+      <small>Infrastructure • Security • Automation</small>
+    </span>
+  </a>
+
+  <section class="error-panel" aria-labelledby="error-title">
+    <p class="error-badge">HTTP ERROR</p>
+    <div class="error-layout">
+      <div class="error-main">
+        <p class="error-code">401</p>
+        <h1 class="error-title" id="error-title">Требуется авторизация</h1>
+        <p class="error-text">Эта страница или действие доступны только после подтверждения доступа. Если вы попали сюда по обычной ссылке, скорее всего она ведёт не туда, куда ожидалось.</p>
+        <div class="error-actions">
+          <a class="error-btn error-btn-primary" href="/">На главную</a>
+          <a class="error-btn error-btn-secondary" href="https://t.me/ZXCurban" target="_blank" rel="noopener noreferrer">Написать в Telegram</a>
+        </div>
+      </div>
+
+      <aside class="error-aside">
+        <p class="error-aside-label">Что делать дальше</p>
+        <ul class="error-list">
+          <li>Вернитесь на главную страницу и начните навигацию заново.</li>
+          <li>Проверьте, что ссылка, по которой вы пришли, действительно корректна.</li>
+          <li>Если доступ должен быть открыт, сообщите мне код 401 и откуда вы перешли.</li>
+        </ul>
+      </aside>
     </div>
-    <p class="footer">Если ошибка повторяется, напишите код ошибки и кратко опишите, что произошло.</p>
   </section>
 </main>
 </body>
