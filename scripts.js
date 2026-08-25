@@ -51,7 +51,7 @@ const translations = {
     "projects.label": "Кейсы",
     "projects.title": "Типовые задачи, которые уже приходилось решать на практике.",
     "projects.metrica.title": "ERP/MES-система управления бизнесом",
-    "projects.metrica.text": "Объединяет контроль типографии и производственных процессов, управление заказами, печатью и их статусами, калькулятор стоимости, архив, работу с клиентами и данными, а также автоматизацию рутинных операций в одном рабочем контуре. Даёт контроль над всем циклом работы без разрыва между операционными задачами и производством.",
+    "projects.metrica.text": "Единая система для типографии и производства: заказы, статусы печати, калькулятор стоимости, архив и работа с клиентами. Закрывает весь цикл работы бизнеса в одном контуре — без разрыва между операционкой и производством.",
     "projects.1.title": "Усиление безопасности бизнес-платформы",
     "projects.1.text": "Аудит серверов и сервисов, устранение критичных точек риска, усиление контроля доступа и общей устойчивости платформы.",
     "projects.2.title": "Система мониторинга и обнаружения проблем",
@@ -132,7 +132,7 @@ const translations = {
     "projects.label": "Cases",
     "projects.title": "Typical tasks I have already solved in practice.",
     "projects.metrica.title": "ERP/MES business management system",
-    "projects.metrica.text": "It brings print-shop and production-process control, order management, printing and status tracking, a cost calculator, archive, client and data work, and routine automation into one working environment. It provides control over the full workflow without a disconnect between operations and production.",
+    "projects.metrica.text": "A single system for print-shop and production workflows: orders, print status tracking, a cost calculator, archive, and client management. It covers the full business cycle in one environment, without a gap between operations and production.",
     "projects.1.title": "Business Platform Security Hardening",
     "projects.1.text": "Server and service audit, removal of critical risk points, stronger access control, and higher overall platform resilience.",
     "projects.2.title": "Monitoring and Issue Detection System",
@@ -178,7 +178,7 @@ const themeColorMeta = document.getElementById("themeColorMeta");
 const i18nNodes = document.querySelectorAll("[data-i18n]");
 const revealItems = document.querySelectorAll(".reveal");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const mobileViewport = window.matchMedia("(max-width: 920px)");
+const mobileViewport = window.matchMedia("(max-width: 850px)");
 const THEME_KEY = "site-theme-v2";
 const CONTACT_SCHEMES = {
   email: "mailto:"
@@ -276,6 +276,7 @@ function closeMenu() {
   }
 
   topbar.classList.remove("menu-open");
+  body.classList.remove("menu-locked");
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-label", getDictionary()["controls.menuOpen"] || "Open menu");
   syncMenuAccessibility();
@@ -287,6 +288,7 @@ function openMenu() {
   }
 
   topbar.classList.add("menu-open");
+  body.classList.add("menu-locked");
   menuToggle.setAttribute("aria-expanded", "true");
   menuToggle.setAttribute("aria-label", getDictionary()["controls.menuClose"] || "Close menu");
   syncMenuAccessibility();
