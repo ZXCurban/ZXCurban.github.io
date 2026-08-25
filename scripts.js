@@ -50,6 +50,8 @@ const translations = {
     "services.4.text": "Автоматизирую повторяющиеся задачи, настраиваю резервное копирование и проверяю, что восстановление реально работает.",
     "projects.label": "Кейсы",
     "projects.title": "Типовые задачи, которые уже приходилось решать на практике.",
+    "projects.metrica.title": "ERP/MES-система управления бизнесом",
+    "projects.metrica.text": "Объединяет контроль типографии и производственных процессов, управление заказами, печатью и их статусами, калькулятор стоимости, архив, работу с клиентами и данными, а также автоматизацию рутинных операций в одном рабочем контуре. Даёт контроль над всем циклом работы без разрыва между операционными задачами и производством.",
     "projects.1.title": "Усиление безопасности бизнес-платформы",
     "projects.1.text": "Аудит серверов и сервисов, устранение критичных точек риска, усиление контроля доступа и общей устойчивости платформы.",
     "projects.2.title": "Система мониторинга и обнаружения проблем",
@@ -70,12 +72,11 @@ const translations = {
     "process.4.text": "Передаю документацию, алерты и рабочий контур поддержки для дальнейшего развития.",
     "contact.label": "Контакты",
     "contact.title": "Если задача уже понятна, написать можно сразу любым удобным способом.",
-    "contact.text": "Быстрее всего отвечаю в Telegram, но email, телефон и GitHub тоже под рукой.",
+    "contact.text": "Быстрее всего отвечаю в Telegram, но email и GitHub тоже под рукой.",
     "contact.primaryCta": "Написать в Telegram",
     "contact.secondaryCta": "Написать на email",
     "contact.telegramLabel": "Telegram",
     "contact.emailLabel": "Email",
-    "contact.phoneLabel": "Телефон",
     "contact.githubLabel": "GitHub",
     "footer": "© Kurban Dalgatov. All rights reserved."
   },
@@ -130,6 +131,8 @@ const translations = {
     "services.4.text": "I automate recurring work, configure backups, and verify that recovery actually works when needed.",
     "projects.label": "Cases",
     "projects.title": "Typical tasks I have already solved in practice.",
+    "projects.metrica.title": "ERP/MES business management system",
+    "projects.metrica.text": "It brings print-shop and production-process control, order management, printing and status tracking, a cost calculator, archive, client and data work, and routine automation into one working environment. It provides control over the full workflow without a disconnect between operations and production.",
     "projects.1.title": "Business Platform Security Hardening",
     "projects.1.text": "Server and service audit, removal of critical risk points, stronger access control, and higher overall platform resilience.",
     "projects.2.title": "Monitoring and Issue Detection System",
@@ -150,12 +153,11 @@ const translations = {
     "process.4.text": "I hand over documentation, alerts, and a working support contour for further growth.",
     "contact.label": "Contact",
     "contact.title": "If the task is already clear, you can reach out right away in whichever way is convenient.",
-    "contact.text": "Telegram is the fastest channel, but email, phone, and GitHub are all easy to reach.",
+    "contact.text": "Telegram is the fastest channel, while email and GitHub are easy to reach too.",
     "contact.primaryCta": "Message on Telegram",
     "contact.secondaryCta": "Send an email",
     "contact.telegramLabel": "Telegram",
     "contact.emailLabel": "Email",
-    "contact.phoneLabel": "Phone",
     "contact.githubLabel": "GitHub",
     "footer": "© Kurban Dalgatov. All rights reserved."
   }
@@ -179,12 +181,10 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 const mobileViewport = window.matchMedia("(max-width: 920px)");
 const THEME_KEY = "site-theme-v2";
 const CONTACT_SCHEMES = {
-  email: "mailto:",
-  phone: "tel:"
+  email: "mailto:"
 };
 const CONTACT_VALUES = {
-  email: [100, 97, 108, 108, 103, 97, 116, 111, 118, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109],
-  phone: [43, 55, 57, 54, 51, 52, 48, 51, 55, 53, 52, 50]
+  email: [100, 97, 108, 108, 103, 97, 116, 111, 118, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109]
 };
 
 function readStorage(key) {
@@ -234,10 +234,6 @@ function getContactDisplayValue(kind) {
   const value = decodeContact(kind);
   if (!value) {
     return "";
-  }
-
-  if (kind === "phone") {
-    return value.replace(/^(\+7)(\d{3})(\d{3})(\d{2})(\d{2})$/, "$1 $2 $3-$4-$5");
   }
 
   return value;
@@ -363,7 +359,7 @@ function applyTheme(theme) {
   writeStorage(THEME_KEY, currentTheme);
 
   if (themeColorMeta) {
-    themeColorMeta.setAttribute("content", currentTheme === "dark" ? "#0f1614" : "#f4efe7");
+    themeColorMeta.setAttribute("content", currentTheme === "dark" ? "#101514" : "#f4f2ed");
   }
 }
 

@@ -4,26 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Сайт-визитка Курбана Далгатова: сети, серверы, безопасность, автоматизация и поддержка инфраструктуры для малого и среднего бизнеса." id="metaDescription">
-<meta name="theme-color" content="#0f1614" id="themeColorMeta">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230f1614'/%3E%3Crect x='17' y='17' width='30' height='30' rx='8' fill='none' stroke='%2380c2ae' stroke-width='5'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#101514" id="themeColorMeta">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23101514'/%3E%3Crect x='17' y='17' width='30' height='30' fill='none' stroke='%238baeb9' stroke-width='5'/%3E%3C/svg%3E">
 <title>Курбан Далгатов | Инфраструктура, безопасность, автоматизация</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-theme="dark">
 <a class="skip-link" href="#content" data-i18n="a11y.skip">Перейти к содержимому</a>
-<div class="page-bg" aria-hidden="true">
-  <span class="page-orb orb-a"></span>
-  <span class="page-orb orb-b"></span>
-  <span class="page-grid"></span>
-</div>
-
 <div class="site-shell">
   <header class="topbar">
     <a href="#home" class="brand" aria-label="Главная страница Kurban Dalgatov" id="brandLink">
-      <span class="brand-mark" aria-hidden="true">KD</span>
       <span class="brand-copy">
         <strong>Kurban Dalgatov</strong>
         <small data-i18n="brand.role">Сети • Безопасность • Автоматизация</small>
@@ -112,16 +105,6 @@
             </a>
           </li>
           <li>
-            <span data-i18n="contact.phoneLabel">Телефон</span>
-            <a href="#contact" data-protected-contact="phone" data-contact-display="phone" class="obfuscated-contact">
-              <span class="contact-token">+7</span>
-              <span class="contact-token">963</span>
-              <span class="contact-token">403</span>
-              <span class="contact-token">75</span>
-              <span class="contact-token">42</span>
-            </a>
-          </li>
-          <li>
             <span data-i18n="contact.githubLabel">GitHub</span>
             <a href="https://github.com/ZXCurban" target="_blank" rel="noopener noreferrer">github.com/ZXCurban</a>
           </li>
@@ -207,6 +190,11 @@
         </div>
 
         <div class="projects-grid">
+          <article class="project-card project-card-featured">
+            <h3 data-i18n="projects.metrica.title">ERP/MES-система управления бизнесом</h3>
+            <p data-i18n="projects.metrica.text">Объединяет контроль типографии и производственных процессов, управление заказами, печатью и их статусами, калькулятор стоимости, архив, работу с клиентами и данными, а также автоматизацию рутинных операций в одном рабочем контуре. Даёт контроль над всем циклом работы без разрыва между операционными задачами и производством.</p>
+          </article>
+
           <article class="project-card">
             <h3 data-i18n="projects.1.title">Усиление безопасности бизнес-платформы</h3>
             <p data-i18n="projects.1.text">Аудит серверов и сервисов, устранение критичных точек риска, усиление контроля доступа и общей устойчивости платформы.</p>
@@ -275,7 +263,7 @@
       <div class="contact-copy">
         <p class="section-title" data-i18n="contact.label">Контакты</p>
         <h2 data-i18n="contact.title">Если задача уже понятна, написать можно сразу любым удобным способом.</h2>
-        <p class="lead" data-i18n="contact.text">Быстрее всего отвечаю в Telegram, но email, телефон и GitHub тоже под рукой.</p>
+        <p class="lead" data-i18n="contact.text">Быстрее всего отвечаю в Telegram, но email и GitHub тоже под рукой.</p>
 
         <div class="hero-actions">
           <a class="button button-primary" href="https://t.me/ZXCurban" target="_blank" rel="noopener noreferrer" data-i18n="contact.primaryCta">Написать в Telegram</a>
@@ -301,17 +289,6 @@
             <span class="contact-token">gmail</span>
             <span class="contact-separator">[dot]</span>
             <span class="contact-token">com</span>
-          </strong>
-        </a>
-
-        <a class="contact-method" href="#contact" data-protected-contact="phone">
-          <span class="contact-method-label" data-i18n="contact.phoneLabel">Телефон</span>
-          <strong class="obfuscated-contact" data-contact-display="phone">
-            <span class="contact-token">+7</span>
-            <span class="contact-token">963</span>
-            <span class="contact-token">403</span>
-            <span class="contact-token">75</span>
-            <span class="contact-token">42</span>
           </strong>
         </a>
 
